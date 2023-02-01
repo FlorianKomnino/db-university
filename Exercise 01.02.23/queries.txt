@@ -21,4 +21,4 @@ List of requested query strings:
 7  -  SELECT COUNT(*) FROM `departments`;
 
 
-8  -  SELECT * FROM `teachers` WHERE `phone` IS NULL;
+8  -  SELECT COUNT(*) FROM `teachers` WHERE `phone` IS NULL;
