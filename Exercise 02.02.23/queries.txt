@@ -34,7 +34,7 @@ SELECT `students`.`name` AS `Nome`, `students`.`surname` AS `Cognome`, `degrees`
 FROM `students`
 JOIN `degrees`
 ON `students`.`degree_id` = `degrees`.`id`
-WHERE `degree_id` = 53;
+WHERE `degrees`.`name` = 'Corso di Laurea in Economia';
 
 
 2  -
@@ -42,7 +42,7 @@ SELECT `departments`.`name` AS `Nome dipartimento`, `degrees`.`name` AS `Nome co
 FROM `departments`
 JOIN `degrees`
 ON `departments`.`id` = `degrees`.`department_id`
-WHERE `degrees`.`department_id` = 7
+WHERE `departments`.`name` = 'Dipartimento di Neuroscienze'
 AND `degrees`.`level` = 'magistrale';
 
 
@@ -78,7 +78,7 @@ ON `teachers`.`id` = `course_teacher`.`teacher_id`;
 
 
 6  -
-SELECT DISTINCT `teachers`.`name` AS `Nome professore`, `teachers`.`surname` AS `Cognome professore`, `departments`.`id`
+SELECT DISTINCT `teachers`.`id` AS `Codice identificativo Professore`, `teachers`.`name` AS `Nome professore`, `teachers`.`surname` AS `Cognome professore`, `departments`.`id` AS `Codice identificativo dipartimento`
 FROM `teachers`
 JOIN `course_teacher`
 ON `course_teacher`.`teacher_id` = `teachers`.`id`
