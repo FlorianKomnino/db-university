@@ -2,25 +2,58 @@ Lists of requested query strings.
 
 GROUP BY:
 
-1  -  
+1  -
 SELECT COUNT(*) AS `Quantità di iscritti`, YEAR(`enrolment_date`) AS `Anno di iscrizione`
 FROM `students` 
 GROUP BY YEAR(`enrolment_date`);
 
 
-2  -  
+2  -
 SELECT COUNT(*) AS `Numero di professori per indirizzo`, `office_address` AS `Relativo indirizzo`
 FROM `teachers`
 GROUP BY `office_address`;
 
 
-3  -  
+3  -
 SELECT AVG(`vote`) AS `Media Voti`, `exam_id` AS `Codice appello`
 FROM `exam_student`
 GROUP BY `exam_id`;
 
 
-4  -  
+4  -
 SELECT COUNT(*) AS `Quantità di corsi di laurea`, `department_id` AS `Codice dipartmento`
 FROM `degrees`
 GROUP BY `department_id`;
+
+
+
+JOIN:
+
+1  -
+SELECT `students`.`name` AS `Nome`, `students`.`surname` AS `Cognome`, `degrees`.`name` AS `Nome corso di laurea`
+FROM `students`
+JOIN `degrees`
+ON `students`.`degree_id` = `degrees`.`id`
+WHERE `degree_id` = 53;
+
+
+2  -
+SELECT `departments`.`name` AS `Nome dipartimento`, `degrees`.`name` AS `Nome corso di laurea` , `degrees`.`level` AS `Livello Corso di laurea`
+FROM `departments`
+JOIN `degrees`
+ON `departments`.`id` = `degrees`.`department_id`
+WHERE `degrees`.`department_id` = 7
+AND `degrees`.`level` = 'magistrale';
+
+
+3  -
+SELECT `teachers`.`name` AS `Nome professore`, `teachers`.`surname` AS `Cognome professore`, `courses`.`name` AS `Nome del corso`
+FROM `teachers`
+JOIN `course_teacher`
+ON `course_teacher`.`teacher_id` = `teachers`.`id`
+JOIN `courses`
+ON `courses`.`id` = `course_teacher`.`course_id`
+WHERE `teachers`.`id` = 44;
+
+
+4  -
