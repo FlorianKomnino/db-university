@@ -57,3 +57,39 @@ WHERE `teachers`.`id` = 44;
 
 
 4  -
+SELECT `students`.`name` AS `Nome studente`, `students`.`surname` AS `Cognome studente`, `degrees`.`name` AS `Nome del corso di laurea`, `degrees`.`level` AS `Grado del corso di laurea`, `departments`.`name` AS `Nome Dipartimento`
+FROM `students` 
+JOIN `degrees`
+ON `degrees`.`id` = `students`.`degree_id`
+JOIN `departments`
+ON `departments`.`id` = `degrees`.`department_id`
+ORDER BY `students`.`name`, `students`.`surname` ASC;
+
+
+5  -
+SELECT `degrees`.`name` AS `Nome corso di laurea`, `degrees`.`level` AS `Livello corso di laurea`, `courses`.`name` AS `Nome singolo corso`, `teachers`.`name` AS `Nome professore`, `teachers`.`surname` AS `Cognome professore`
+FROM `degrees`
+JOIN `courses`
+ON `courses`.`degree_id` = `degrees`.`id`
+JOIN `course_teacher`
+ON `course_teacher`.`course_id` = `courses`.`id`
+JOIN `teachers`
+ON `teachers`.`id` = `course_teacher`.`teacher_id`;
+
+
+6  -
+SELECT DISTINCT `teachers`.`name` AS `Nome professore`, `teachers`.`surname` AS `Cognome professore`, `departments`.`id`
+FROM `teachers`
+JOIN `course_teacher`
+ON `course_teacher`.`teacher_id` = `teachers`.`id`
+JOIN `courses`
+ON `courses`.`id` = `course_teacher`.`course_id`
+JOIN `degrees`
+ON `degrees`.`id` = `courses`.`degree_id`
+JOIN `departments`
+ON `departments`.`id` = `degrees`.`department_id`
+WHERE `departments`.`id` = 5;
+
+
+7  -
+
