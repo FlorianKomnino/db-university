@@ -1,0 +1,26 @@
+Lists of requested query strings.
+
+GROUP BY:
+
+1  -  
+SELECT COUNT(*) AS `Quantità di iscritti`, YEAR(`enrolment_date`) AS `Anno di iscrizione`
+FROM `students` 
+GROUP BY YEAR(`enrolment_date`);
+
+
+2  -  
+SELECT COUNT(*) AS `Numero di professori per indirizzo`, `office_address` AS `Relativo indirizzo`
+FROM `teachers`
+GROUP BY `office_address`;
+
+
+3  -  
+SELECT AVG(`vote`) AS `Media Voti`, `exam_id` AS `Codice appello`
+FROM `exam_student`
+GROUP BY `exam_id`;
+
+
+4  -  
+SELECT COUNT(*) AS `Quantità di corsi di laurea`, `department_id` AS `Codice dipartmento`
+FROM `degrees`
+GROUP BY `department_id`;
